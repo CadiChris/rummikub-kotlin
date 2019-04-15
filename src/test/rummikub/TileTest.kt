@@ -2,8 +2,8 @@ package test.rummikub
 
 import main.rummikub.*
 import org.junit.Test
-
-import org.junit.Assert.*
+import kotlin.test.assertEquals
+import kotlin.test.assertNotEquals
 
 class TileTest {
 
