@@ -19,14 +19,6 @@ data class Run(val tiles: List<Tile>) {
     override fun toString(): String {
        return tiles.joinToString { it.toString() }
     }
-
-    fun canBeExtendedWith(aTile: Tile): Boolean {
-
-        val fitsOnTheLeft = aTile.value == minValue() - 1
-        val fitsOnTheRight = aTile.value == maxValue() + 1
-
-        return fitsOnTheLeft || fitsOnTheRight
-    }
 }
 
 fun IntRange.red() = this.map { value -> value.red() }
