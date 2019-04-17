@@ -1,9 +1,6 @@
 package test.rummikub
 
-import main.rummikub.Run
-import main.rummikub.Suit
-import main.rummikub.blue
-import main.rummikub.red
+import main.rummikub.*
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
@@ -30,6 +27,14 @@ class RunTest {
         assertEquals(
             Run(8..12, Suit.Blue),
             Run(8..11, Suit.Blue).extendWith(12.blue())
+        )
+    }
+
+    @Test
+    fun a_run_cannot_be_extended_with_different_suit() {
+        assertEquals(
+            Run(9..11, Suit.Green),
+            Run(9..11, Suit.Green).extendWith(8.yellow())
         )
     }
 }

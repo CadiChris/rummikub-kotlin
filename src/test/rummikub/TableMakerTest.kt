@@ -22,7 +22,6 @@ class TableMakerTest {
         )
     }
 
-
     @Test
     fun does_not_use_a_tile_more_than_once_in_next_table() {
         val tableWithSameTwoRuns = table(
