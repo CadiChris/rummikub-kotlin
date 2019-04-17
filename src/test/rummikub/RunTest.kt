@@ -1,34 +1,17 @@
 package test.rummikub
 
 import main.rummikub.*
-import org.hamcrest.CoreMatchers.containsString
-import org.junit.Assert.assertThat
 import org.junit.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
+import kotlin.test.assertNotEquals
 
 class RunTest {
 
     @Test
-    fun represents_a_run() {
-        assertEquals("[2-3-4-5][red]", Run((2..5).red()).toString())
-        assertEquals("[1-2-3][blue]", Run((1..3).blue()).toString())
-        assertEquals("[8-9-10-11-12][green]", Run((8..12).green()).toString())
-        assertEquals("[7-8-9][yellow]", Run((7..9).yellow()).toString())
-    }
-
-    @Test
-    fun a_run_with_different_suits_cant_be_created() {
-        var thrown = false
-        try {
-            Run(listOf(1.red(), 2.green()))
-        } catch (e: NotUniqueSuitInRunException) {
-            thrown = true
-            assertThat(e.message, containsString("red"))
-            assertThat(e.message, containsString("green"))
-        } finally {
-            assertTrue(thrown)
-        }
+    fun compares_two_run() {
+        assertEquals(Run((2..5).red()), Run((2..5).red()))
+        assertNotEquals(Run((2..5).green()), Run((2..5).blue()))
+        assertNotEquals(Run((2..5).yellow()), Run((2..5).red()))
     }
 
     @Test

@@ -2,11 +2,6 @@ package main.rummikub
 
 data class Run(val tiles: List<Tile>) {
 
-    init {
-        val moreThanOneSuit = tiles.distinctBy { it.suit }.size > 1
-        if (moreThanOneSuit) throw NotUniqueSuitInRunException(tiles)
-    }
-
     fun extendWith(candidate: Tile): Run {
         val fitsOnTheLeft = candidate.value == minValue() - 1
         val fitsOnTheRight = candidate.value == maxValue() + 1
@@ -22,20 +17,15 @@ data class Run(val tiles: List<Tile>) {
     private fun maxValue() = tiles.maxBy { it.value }!!.value
 
     override fun toString(): String {
-        val values = tiles.joinToString(
-            separator = "-",
-            prefix = "[",
-            postfix = "]"
-        ) {
-            it.value.toString()
-        }
+       return tiles.joinToString { it.toString() }
+    }
 
-        val suits = tiles
-            .map { it.suit }
-            .distinct()
-            .joinToString(prefix = "[", postfix = "]")
+    fun canBeExtendedWith(aTile: Tile): Boolean {
 
-        return """$values$suits"""
+        val fitsOnTheLeft = aTile.value == minValue() - 1
+        val fitsOnTheRight = aTile.value == maxValue() + 1
+
+        return fitsOnTheLeft || fitsOnTheRight
     }
 }
 
@@ -43,10 +33,3 @@ fun IntRange.red() = this.map { value -> value.red() }
 fun IntRange.blue() = this.map { value -> value.blue() }
 fun IntRange.green() = this.map { value -> value.green() }
 fun IntRange.yellow() = this.map { value -> value.yellow() }
-
-class NotUniqueSuitInRunException(tiles: List<Tile>) : Throwable(
-    """
-    A run can only contain one suit.
-    Received $tiles
-    """.trimIndent()
-)
