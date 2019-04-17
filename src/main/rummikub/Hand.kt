@@ -1,3 +1,3 @@
 package main.rummikub
 
-class Hand(val tile: Tile)
+class Hand(vararg val tiles: Tile)
