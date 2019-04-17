@@ -21,12 +21,7 @@ data class Run(
     private fun end() = values.last
 
     override fun toString(): String {
-        val values = values.joinToString(
-            separator = "-",
-            prefix = "[",
-            postfix = "]"
-        )
-
-        return """$values[$suit]"""
+        val values = values.joinToString(separator = "-")
+        return """[$values $suit]"""
     }
 }
