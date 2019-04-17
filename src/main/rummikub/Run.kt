@@ -1,27 +1,31 @@
 package main.rummikub
 
-data class Run(val tiles: List<Tile>) {
+data class Run(
+    private val values: IntRange,
+    private val suit: Suit
+) {
 
-    fun extendWith(candidate: Tile): Run {
-        val fitsOnTheLeft = candidate.value == minValue() - 1
-        val fitsOnTheRight = candidate.value == maxValue() + 1
+    fun extendWith(aTile: Tile): Run {
+        val fitsOnTheLeft = aTile.value == start() - 1
+        val fitsOnTheRight = aTile.value == end() + 1
 
         return when {
-            fitsOnTheLeft -> Run(listOf(candidate).plus(tiles))
-            fitsOnTheRight -> Run(tiles.plus(candidate))
+            fitsOnTheLeft -> Run(aTile.value..end(), suit)
+            fitsOnTheRight -> Run(start()..aTile.value, suit)
             else -> this
         }
     }
 
-    private fun minValue() = tiles.minBy { it.value }!!.value
-    private fun maxValue() = tiles.maxBy { it.value }!!.value
+    private fun start() = values.first
+    private fun end() = values.last
 
     override fun toString(): String {
-       return tiles.joinToString { it.toString() }
+        val values = values.joinToString(
+            separator = "-",
+            prefix = "[",
+            postfix = "]"
+        )
+
+        return """$values[$suit]"""
     }
 }
-
-fun IntRange.red() = this.map { value -> value.red() }
-fun IntRange.blue() = this.map { value -> value.blue() }
-fun IntRange.green() = this.map { value -> value.green() }
-fun IntRange.yellow() = this.map { value -> value.yellow() }

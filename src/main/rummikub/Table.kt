@@ -1,6 +1,8 @@
 package main.rummikub
 
-data class Table(val runs: List<Run>) {
+data class Table(
+    private val runs: List<Run>
+) {
 
     fun add(aTile: Tile): Table {
         var tileUsed = false
@@ -16,5 +18,9 @@ data class Table(val runs: List<Run>) {
         }
 
         return Table(newRuns)
+    }
+
+    override fun toString(): String {
+        return runs.joinToString()
     }
 }
