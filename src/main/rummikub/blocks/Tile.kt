@@ -1,4 +1,4 @@
-package main.rummikub
+package main.rummikub.blocks
 
 data class Tile(
     val value: Int,
@@ -16,8 +16,6 @@ fun makeTile(value: Int, suit: Suit): Tile {
         else -> throw InvalidTileValueException(value)
     }
 }
-
-enum class Suit { Red, Blue, Green, Yellow }
 
 class InvalidTileValueException(invalidValue: Int) :
     Throwable("""$invalidValue is not a valid tile value""")

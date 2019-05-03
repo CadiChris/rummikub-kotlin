@@ -1,4 +1,4 @@
-package main.rummikub
+package main.rummikub.blocks
 
 data class Run(
     private val values: IntRange,

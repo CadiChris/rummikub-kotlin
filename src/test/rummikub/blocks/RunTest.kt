@@ -1,6 +1,6 @@
-package test.rummikub
+package test.rummikub.blocks
 
-import main.rummikub.*
+import main.rummikub.blocks.*
 import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals

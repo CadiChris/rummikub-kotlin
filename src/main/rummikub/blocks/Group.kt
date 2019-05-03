@@ -1,4 +1,4 @@
-package main.rummikub
+package main.rummikub.blocks
 
 data class Group(val value: Int, val suits: Set<Suit>) {
     fun extendWith(aTile: Tile): Group {

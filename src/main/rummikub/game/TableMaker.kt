@@ -1,4 +1,4 @@
-package main.rummikub
+package main.rummikub.game
 
 class TableMaker(
     private val aTable: Table

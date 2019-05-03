@@ -1,4 +1,8 @@
-package main.rummikub
+package main.rummikub.game
+
+import main.rummikub.blocks.Group
+import main.rummikub.blocks.Run
+import main.rummikub.blocks.Tile
 
 data class Table(
     private val runs: List<Run> = emptyList(),

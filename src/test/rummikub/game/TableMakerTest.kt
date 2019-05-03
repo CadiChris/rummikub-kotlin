@@ -1,7 +1,11 @@
-package test.rummikub
+package test.rummikub.game
 
-import main.rummikub.*
+import main.rummikub.blocks.*
+import main.rummikub.game.Hand
+import main.rummikub.game.Table
+import main.rummikub.game.TableMaker
 import org.junit.Test
+import test.rummikub.blocks.ALL_SUITS
 
 class TableMakerTest {
     private fun table(vararg runs: Run) = Table(runs = runs.toList())
