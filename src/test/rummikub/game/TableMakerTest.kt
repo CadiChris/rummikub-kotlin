@@ -18,7 +18,6 @@ class TableMakerTest {
         val fittingTile = 6.yellow()
         val tableWithExtendedRun = BuildTable(Run(3..6, Suit.Yellow))
 
-
         assertEquals(
             tableWithExtendedRun,
             tableMaker.nextTableWith(Hand(fittingTile))
