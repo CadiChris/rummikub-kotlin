@@ -38,6 +38,6 @@ data class Table(
         val runsPrint = """RUNS : ${runs.joinToString()}"""
         val groupsPrint = """GROUPS : ${groups.joinToString()}"""
 
-        return "$runsPrint\n$groupsPrint"
+        return "\n$runsPrint\n$groupsPrint\n"
     }
 }
